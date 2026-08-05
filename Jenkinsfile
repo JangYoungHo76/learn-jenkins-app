@@ -2,11 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('NPM Test') {
+        stage('Build Stage') {
 
             steps {
                 sh '''
-                    npm test
+                    ls -al
+                    node --version
+                    npm --version
+                    npm ci
+                    npm run build
+                    ls -al
                 '''
             }
         }
