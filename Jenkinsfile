@@ -11,7 +11,7 @@ pipeline {
 
             steps {
                 sh '''
-                    sh 'npm --version'
+                    npm --version
                 '''
             }
         }
