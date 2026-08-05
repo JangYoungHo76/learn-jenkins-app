@@ -5,10 +5,10 @@ pipeline {
         stage('npm install stage') {
             agent{
                 docker{
-                    image 'node:18-alpine''
+                    image 'node:18-alpine'
                 }
             }
-            
+
             steps {
                 sh '''
                     sh 'npm --version'
