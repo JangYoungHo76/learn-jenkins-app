@@ -14,12 +14,12 @@ pipeline {
         stage('build') {
             steps {
                 sh '''
-                    // ls -al
-                    // node --version
-                    // npm --version
-                    // npm ci
-                    // npm run build
-                    // ls -al
+                    #ls -al
+                    #node --version
+                    #npm --version
+                    #npm ci
+                    #npm run build
+                    #ls -al
                 '''
             }
         }
@@ -37,10 +37,10 @@ pipeline {
         stage('End To End'){
             steps{
                 sh '''
-                    // npm install serve
-                    // npx serve -s build & sleep 10
-                    // npx playwright install
-                    // npx playwright test
+                    #npm install serve
+                    #npx serve -s build & sleep 10
+                    #npx playwright install
+                    #npx playwright test
                 '''
             }
         }
@@ -48,8 +48,8 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh '''
-                    // npm install netlify-cli@latest
-                    // node_modules/.bin/netlify --version
+                    #npm install netlify-cli@latest
+                    #node_modules/.bin/netlify --version
                 '''
             }
         }
