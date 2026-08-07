@@ -63,7 +63,7 @@ pipeline {
                 CI_ENVIRONMENT_URL = 'https://aquamarine-travesseiro-7b73f4.netlify.app/'
             }
             
-            steps{
+            steps{ 
                 sh '''
                     npx playwright test --reporter=html
                 '''
