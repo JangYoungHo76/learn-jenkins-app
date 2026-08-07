@@ -1,12 +1,14 @@
 pipeline {
-    /*
+    
     agent{
         docker{
             image 'mcr.microsoft.com/playwright:v1.62.0-noble'
             reuseNode true
+            image 'amazon/aws-cli'
+            args "--entrypoint=''"
         }
     }
-    */
+    
     agent none
 
     environment{
@@ -17,12 +19,6 @@ pipeline {
     stages {
 
         stage('AWS') {
-            agent{
-                docker{
-                    image 'amazon/aws-cli'
-                    args "--entrypoint=''"
-                }
-            }
             steps {
                 sh 'aws --version'
             }
