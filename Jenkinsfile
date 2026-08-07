@@ -8,8 +8,6 @@ pipeline {
             args "--entrypoint=''"
         }
     }
-    
-    agent none
 
     environment{
         NETLIFY_SITE_ID = '78b4a1d1-544d-42e7-9658-932781a919c8'
