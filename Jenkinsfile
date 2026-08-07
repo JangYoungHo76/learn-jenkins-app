@@ -1,7 +1,7 @@
 pipeline {
     agent{
         docker{
-            image 'mcr.microsoft.com/playwright:v1.39.0-noble'
+            image 'mcr.microsoft.com/playwright:v1.55.0-noble'
             reuseNode true
         }
     }
@@ -63,7 +63,7 @@ pipeline {
                 CI_ENVIRONMENT_URL = 'https://aquamarine-travesseiro-7b73f4.netlify.app/'
             }
             
-            steps{ 
+            steps{
                 sh '''
                     npx playwright test --reporter=html
                 '''
