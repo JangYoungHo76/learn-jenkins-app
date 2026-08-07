@@ -1,10 +1,12 @@
 pipeline {
-    #agent{
-    #    docker{
-    #        image 'mcr.microsoft.com/playwright:v1.62.0-noble'
-    #        reuseNode true
-    #    }
-    #}
+    /*
+    agent{
+        docker{
+            image 'mcr.microsoft.com/playwright:v1.62.0-noble'
+            reuseNode true
+        }
+    }
+    */
     agent none
 
     environment{
@@ -25,7 +27,7 @@ pipeline {
                 sh 'aws --version'
             }
         }
-
+        
         stage('build') {
             steps {
                 sh '''
