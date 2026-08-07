@@ -60,7 +60,7 @@ pipeline {
 
         stage('Prod E2E'){
             environment{
-                CI_ENVIRONMENT_URL = 'https://aquamarine-travesseiro-7b73f4.netlify.app'
+                CI_ENVIRONMENT_URL = 'https://6a751a7d1ef6138549bbc85c--aquamarine-travesseiro-7b73f4.netlify.app'
             }
             
             steps{
