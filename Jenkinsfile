@@ -14,14 +14,16 @@ pipeline {
 
     stages {
         stage('AWS') {
-            docker{         
-                image 'amazon/aws-cli'
-                args "--entrypoint=''"
+            agent{
+                docker{         
+                    image 'amazon/aws-cli'
+                    args "--entrypoint=''"
+                }
             }        
 
             steps {
                 sh 'aws --version'
-            }
+            }           
         }
         
         stage('build') {
@@ -30,7 +32,7 @@ pipeline {
                     #ls -al
                     #node --version
                     #npm --version
-                    #npm ci
+                    npm ci
                     npm run build
                     #ls -al
                 '''
@@ -52,7 +54,7 @@ pipeline {
                 sh '''
                     npm install serve
                     npx serve -s build & sleep 10
-                    npx playwright install
+                    #npx playwright install
                     npx playwright test
                 '''
             }
