@@ -34,7 +34,7 @@ pipeline {
                     #ls -al
                     #node --version
                     #npm --version
-                    #npm ci
+                    npm ci
                     npm run build
                     #ls -al
                 '''
@@ -42,6 +42,13 @@ pipeline {
         }
 
         stage('Test'){
+            agent{
+                docker{
+                    image 'mcr.microsoft.com/playwright:v1.62.0-noble'
+                    reuseNode true    
+                }
+            } 
+
             steps{
                 echo 'Test Stage'
                 sh '''
@@ -52,6 +59,13 @@ pipeline {
         }
 
         stage('End To End'){
+
+            agent{
+                docker{
+                    image 'mcr.microsoft.com/playwright:v1.62.0-noble'
+                    reuseNode true    
+                }
+            }
             steps{
                 sh '''
                     npm install serve
@@ -63,6 +77,12 @@ pipeline {
         }
 
         stage('Deploy Staging'){
+            agent{
+                docker{
+                    image 'mcr.microsoft.com/playwright:v1.62.0-noble'
+                    reuseNode true    
+                }
+            } 
             steps{
                 sh '''
                     npm install netlify-cli@latest
@@ -75,6 +95,12 @@ pipeline {
         }    
         
         stage('Deploy Prod'){
+            agent{
+                docker{
+                    image 'mcr.microsoft.com/playwright:v1.62.0-noble'
+                    reuseNode true    
+                }
+            } 
             steps{
                 sh '''
                     npm install netlify-cli@latest
