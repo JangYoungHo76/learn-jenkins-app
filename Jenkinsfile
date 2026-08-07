@@ -45,8 +45,20 @@ pipeline {
                 '''
             }
         }
+
+        stage('Deploy Staging'){
+            steps{
+                sh '''
+                    npm install netlify-cli@latest
+                    node_modules/.bin/netlify --version
+                    node_modules/.bin/netlify status
+                    node_modules/.bin/netlify deploy --dir=build
+                    echo 'Triger Test'
+                '''
+            }
+        }    
         
-        stage('Deploy'){
+        stage('Deploy Prod'){
             steps{
                 sh '''
                     npm install netlify-cli@latest
