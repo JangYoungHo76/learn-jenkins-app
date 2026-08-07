@@ -1,10 +1,11 @@
 pipeline {
-    agent{
-        docker{
-            image 'mcr.microsoft.com/playwright:v1.62.0-noble'
-            reuseNode true
-        }
-    }
+    #agent{
+    #    docker{
+    #        image 'mcr.microsoft.com/playwright:v1.62.0-noble'
+    #        reuseNode true
+    #    }
+    #}
+    agent none
 
     environment{
         NETLIFY_SITE_ID = '78b4a1d1-544d-42e7-9658-932781a919c8'
@@ -12,6 +13,19 @@ pipeline {
     }
 
     stages {
+
+        stage('AWS') {
+            agent{
+                docker{
+                    image 'amazon/aws-cli'
+                    args "--entrypoint=''"
+                }
+            }
+            steps {
+                sh 'aws --version'
+            }
+        }
+
         stage('build') {
             steps {
                 sh '''
