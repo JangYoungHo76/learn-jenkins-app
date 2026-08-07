@@ -57,6 +57,18 @@ pipeline {
                 '''
             }
         }    
+
+        stage('Prod E2E'){
+            environment{
+                CI_ENVIRONMENT_URL = 'https://aquamarine-travesseiro-7b73f4.netlify.app'
+            }
+            
+            steps{
+                sh '''
+                    npx playwright test --reporter=html
+                '''
+            }
+        }
     }    
 
     post{
