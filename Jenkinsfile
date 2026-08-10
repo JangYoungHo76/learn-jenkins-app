@@ -41,7 +41,8 @@ pipeline {
                     #ls -al
                     #node --version
                     #npm --version
-                    #npm ci
+                    rm -rf node_modules        
+                    npm ci
                     npm run build
                     #ls -al
                 '''
